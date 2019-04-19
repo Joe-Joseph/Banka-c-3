@@ -23,6 +23,7 @@ exports.createAccount = async (req, res) => {
   }
 };
 
+// UPDATE ACCOUNT STATUS
 exports.updateAccount = async (req, res) => {
   try {
     const accountNumber = parseInt(req.params.accountnumber);
@@ -47,5 +48,24 @@ exports.updateAccount = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({ status: 500, error: err });
+  }
+};
+
+// DELETE SPECIFIC ACCOUNT
+exports.deleteAccount = async (req, res) => {
+  try {
+    const accountNumber = parseInt(req.params.accountnumber);
+    const account = await db.fetchOneAcc(accountNumber);
+    if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
+
+    if (req.user.type !== 'staff') {
+      return res.status(401).json({ status: 401, error: 'Only Cashier and admin can delete an account' });
+    }
+
+    await db.deleteTrans(accountNumber);
+    await db.deleteAcc(accountNumber);
+    return res.status(200).json({ status: 200, message: 'account successfully deleted' });
+  } catch (error) {
+    res.status(500).json({ status: 500, error });
   }
 };

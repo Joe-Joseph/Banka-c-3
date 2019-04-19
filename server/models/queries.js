@@ -56,6 +56,20 @@ class Dbquery {
     const result = await pool.query(updateStatusQuery, [data.status, accNumber]);
     return result;
   }
+
+  // DELETE SPECIFIC ACCOUNT
+  async deleteAcc(accNumber) {
+    const deleteAccQuery = 'DELETE FROM accounts WHERE accountnumber = $1';
+    const result = await pool.query(deleteAccQuery, [accNumber]);
+    return result;
+  }
+
+  // DELETE A TRANSACTION
+  async deleteTrans(accNumber) {
+    const deleteAccQuery = 'DELETE FROM transactions WHERE accountnumber = $1';
+    const result = await pool.query(deleteAccQuery, [accNumber]);
+    return result;
+  }
 }
 
 export default new Dbquery();
