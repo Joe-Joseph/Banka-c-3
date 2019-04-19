@@ -42,6 +42,20 @@ class Dbquery {
     const result = pool.query(createAccQuery, [account.accountNumber, account.createdOn, account.owner, account.type, account.status, account.balance]);
     return result;
   }
+
+  // FIND ONE ACCOUNT NUMBER
+  async fetchOneAcc(accNumber) {
+    const queryText = 'SELECT * FROM accounts WHERE accountnumber = $1';
+    const response = await pool.query(queryText, [accNumber]);
+    return response;
+  }
+
+  // UPDATE ACCOUNT STATUS
+  async updateAccStatus(data, accNumber) {
+    const updateStatusQuery = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
+    const result = await pool.query(updateStatusQuery, [data.status, accNumber]);
+    return result;
+  }
 }
 
 export default new Dbquery();
