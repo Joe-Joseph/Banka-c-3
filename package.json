@@ -4,7 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "nodemon --exec babel-node server/app",
+    "create": "node --require @babel/register server/models/db createTables",
+    "deletetb": "node --require @babel/register server/models/db deleteTables"
   },
   "repository": {
     "type": "git",
