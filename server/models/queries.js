@@ -114,6 +114,13 @@ class Dbquery {
     const response = await pool.query(queryText, [accNumber, payload.id]);
     return response;
   }
+
+  // GET ALL ACCOUNTS
+  async fetchAll() {
+    const selectAll = 'SELECT accounts.createdon, accounts.accountnumber, accounts.type, accounts.status, accounts.balance, users.email FROM accounts, users';
+    const result = await pool.query(selectAll);
+    return result;
+  }
 }
 
 export default new Dbquery();

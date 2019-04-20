@@ -26,5 +26,6 @@ module.exports = {
     "import/prefer-default-export": 0,
     "radix":0,
     "no-dupe-keys": 0,
+    "no-plusplus": 0,
   },
 };
