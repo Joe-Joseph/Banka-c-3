@@ -84,12 +84,27 @@ exports.debitAccount = async (req, res) => {
 };
 
 // GET ALL TRANSACTIONS
-exports.getAllTrans = async (req, res) => {
+exports.getOneTrans = async (req, res) => {
   if (req.user.type !== 'user') {
     return res.status(401).json({ status: 401, error: 'Only user can view his transaction history' });
   }
 
-  const result = await db.fetchAllTrans();
+  const result = await db.fetchTransById(parseInt(req.params.id));
   if (!result) return res.status(404).json({ status: 404, error: 'No transaction found' });
+  return res.status(200).json({ status: 200, data: result.rows });
+};
+
+exports.getTransForAcc = async (req, res) => {
+  if (req.user.type !== 'user') {
+    return res.status(401).json({ status: 401, error: 'Only User can view transactions' });
+  }
+
+  if (!parseInt(req.params.accountnumber)) {
+    return res.status(404).json({ status: 404, error: 'Account does not exists' });
+  }
+
+  const result = await db.fetchTransForAcc(parseInt(req.params.accountnumber));
+  if (!result) return res.status(404).json({ status: 404, error: 'There is no transaction on this accounts' });
+
   return res.status(200).json({ status: 200, data: result.rows });
 };

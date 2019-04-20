@@ -15,6 +15,7 @@ router.delete('/accounts/:accountnumber', auth, accountCtrl.deleteAccount);
 
 router.post('/transactions/:accountnumber/credit', auth, transactionCtrl.creditAccount);
 router.post('/transactions/:accountnumber/debit', auth, transactionCtrl.debitAccount);
-router.get('/accounts/:accountnumber/transactions', auth, transactionCtrl.getAllTrans);
+router.get('/transactions/:id', auth, transactionCtrl.getOneTrans);
+router.get('/accounts/:accountnumber/transactions', auth, transactionCtrl.getTransForAcc);
 
 export default router;
