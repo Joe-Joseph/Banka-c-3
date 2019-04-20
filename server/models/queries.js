@@ -93,6 +93,13 @@ class Dbquery {
     const result = await pool.query(updateBalanceQuery, [data, accountNumber]);
     return result;
   }
+
+  // GET ALL TRANSACTIONS
+  async fetchAllTrans() {
+    const selectAllTrans = 'SELECT * FROM transactions';
+    const result = await pool.query(selectAllTrans);
+    return result;
+  }
 }
 
 export default new Dbquery();
