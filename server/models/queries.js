@@ -70,6 +70,29 @@ class Dbquery {
     const result = await pool.query(deleteAccQuery, [accNumber]);
     return result;
   }
+
+  // MAKE TRANSACTION
+  async transation(data, transaType, accountNumber, userId, oldBalance, newbalance) {
+    const creditTransaction = {
+      createdon: moment().format('LL'),
+      type: transaType,
+      accountnumber: accountNumber,
+      cashier: userId.id,
+      amount: data.amount,
+      oldbalance: oldBalance,
+      newbalance,
+    };
+    const creditQuery = 'INSERT INTO transactions (createdon, type, accountnumber, cashier, amount, oldbalance, newbalance) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *';
+    const result = await pool.query(creditQuery, [creditTransaction.createdon, creditTransaction.type, creditTransaction.accountnumber, creditTransaction.cashier, creditTransaction.amount, creditTransaction.oldbalance, creditTransaction.newbalance]);
+    return result;
+  }
+
+  // UPDATE ACCOUNT BALANCE
+  async updateAcc(data, accountNumber) {
+    const updateBalanceQuery = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
+    const result = await pool.query(updateBalanceQuery, [data, accountNumber]);
+    return result;
+  }
 }
 
 export default new Dbquery();

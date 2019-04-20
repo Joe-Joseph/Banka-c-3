@@ -19,7 +19,7 @@ exports.signup = async (req, res) => {
       lastname: user.rows[0].lastname,
       email: user.rows[0].email,
       type: user.rows[0].type,
-      isAdmin: user.rows[0].isAdmin,
+      isAdmin: user.rows[0].isadmin,
     };
     const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '24h' });
 
@@ -57,7 +57,7 @@ exports.login = async (req, res) => {
         lastname: user.rows[0].lastname,
         email: user.rows[0].email,
         type: user.rows[0].type,
-        isAdmin: user.rows[0].isAdmin,
+        isAdmin: user.rows[0].isadmin,
       };
       const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '24h' });
       return res.status(200).json({
