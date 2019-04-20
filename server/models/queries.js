@@ -94,10 +94,17 @@ class Dbquery {
     return result;
   }
 
-  // GET ALL TRANSACTIONS
-  async fetchAllTrans() {
-    const selectAllTrans = 'SELECT * FROM transactions';
-    const result = await pool.query(selectAllTrans);
+  // GET TRANSACTION BY ID
+  async fetchTransById(transId) {
+    const selectAllTrans = 'SELECT * FROM transactions WHERE id = $1';
+    const result = await pool.query(selectAllTrans, [transId]);
+    return result;
+  }
+
+  // GET TRANSACTIONS FOR ONE ACCOUNT
+  async fetchTransForAcc(accNumber) {
+    const selectTransForAcc = 'SELECT * FROM transactions WHERE accountnumber = $1';
+    const result = await pool.query(selectTransForAcc, [accNumber]);
     return result;
   }
 }
