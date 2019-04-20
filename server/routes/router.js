@@ -12,6 +12,7 @@ router.post('/auth/signin', signupCtrl.login);
 router.post('/accounts', auth, accountCtrl.createAccount);
 router.patch('/accounts/:accountnumber', auth, accountCtrl.updateAccount);
 router.delete('/accounts/:accountnumber', auth, accountCtrl.deleteAccount);
+router.get('/accounts/:accountnumber', auth, accountCtrl.getOneAccount);
 
 router.post('/transactions/:accountnumber/credit', auth, transactionCtrl.creditAccount);
 router.post('/transactions/:accountnumber/debit', auth, transactionCtrl.debitAccount);

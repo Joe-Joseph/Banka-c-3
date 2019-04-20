@@ -69,3 +69,18 @@ exports.deleteAccount = async (req, res) => {
     res.status(500).json({ status: 500, error });
   }
 };
+
+exports.getOneAccount = async (req, res) => {
+  const result = await db.fetchOneAccDetails(parseInt(req.params.accountnumber), req.user);
+  return res.status(200).json({
+    status: 200,
+    data: {
+      createdOn: result.rows[0].createdon,
+      accountNumber: result.rows[0].accountnumber,
+      ownerEmail: req.user.email,
+      type: result.rows[0].type,
+      status: result.rows[0].status,
+      balance: result.rows[0].balance,
+    },
+  });
+};

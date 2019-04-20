@@ -107,6 +107,13 @@ class Dbquery {
     const result = await pool.query(selectTransForAcc, [accNumber]);
     return result;
   }
+
+  // FIND ONE ACCOUNT DETAILS FOR A LOGGED IN USER
+  async fetchOneAccDetails(accNumber, payload) {
+    const queryText = 'SELECT * FROM accounts WHERE accountnumber = $1 AND owner = $2';
+    const response = await pool.query(queryText, [accNumber, payload.id]);
+    return response;
+  }
 }
 
 export default new Dbquery();
