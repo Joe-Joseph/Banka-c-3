@@ -121,6 +121,13 @@ class Dbquery {
     const result = await pool.query(selectAll);
     return result;
   }
+
+  // GET ACCOUNTS FOR A SPECIFIC USER
+  async fetchAccountsForUser(email) {
+    const selectAllAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE users.email=$1';
+    const result = pool.query(selectAllAccounts, [email]);
+    return result;
+  }
 }
 
 export default new Dbquery();
