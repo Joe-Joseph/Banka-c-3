@@ -14,6 +14,7 @@ router.patch('/accounts/:accountnumber', auth, accountCtrl.updateAccount);
 router.delete('/accounts/:accountnumber', auth, accountCtrl.deleteAccount);
 router.get('/accounts/:accountnumber', auth, accountCtrl.getOneAccount);
 router.get('/accounts', auth, accountCtrl.getAllAccounts);
+router.get('/user/:email/accounts', auth, accountCtrl.getAccountsForOneUser);
 
 router.post('/transactions/:accountnumber/credit', auth, transactionCtrl.creditAccount);
 router.post('/transactions/:accountnumber/debit', auth, transactionCtrl.debitAccount);
