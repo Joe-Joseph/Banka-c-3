@@ -130,7 +130,7 @@ class Dbquery {
   }
 
   // VIEW ACTIVE ACCOUNT
-  async fetchActiveAccounts(data) {
+  async fetchAccountsByStatus(data) {
     const selectActiveAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE accounts.status=$1';
     const result = pool.query(selectActiveAccounts, [data.status]);
     return result;
