@@ -136,3 +136,38 @@ exports.getAccountsForOneUser = async (req, res) => {
 
   return res.status(200).json({ status: 200, data: foundAccounts });
 };
+
+// GET ALL ACTIVE ACCOUNTS
+exports.getActiveAccounts = async (req, res) => {
+  if (req.user.type === 'user') {
+    return res.status(401).json({
+      status: 401,
+      error: 'Only staff can view active accounts',
+    });
+  }
+
+  const ActiveAccounts = await db.fetchActiveAccounts(req.query);
+  if (!ActiveAccounts.rows[0]) {
+    return res.status(404).json({
+      status: 404,
+      error: 'No active account',
+    });
+  }
+
+  const foundActiveAccounts = [];
+  ActiveAccounts.rows.forEach((row) => {
+    const active = {
+      createdOn: row.createdon,
+      accountNumber: row.accountnumber,
+      ownerEmail: row.email,
+      type: row.type,
+      status: row.status,
+      balance: row.balance,
+    };
+    foundActiveAccounts.push(active);
+  });
+  return res.status(200).json({
+    status: 200,
+    data: foundActiveAccounts,
+  });
+};
