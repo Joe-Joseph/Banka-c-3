@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3)
+[![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=develop)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop)
 # Banka
 **Banka** is a banking application that powers banking operations like account creation, customer deposit and withdrawals..
 
