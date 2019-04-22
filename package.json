@@ -4,10 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --reporter=text --reporter=lcov mocha --require babel-polyfill --require @babel/register server/tests/**/*.test.js --exit",
-    "start": "nodemon --exec babel-node server/app",
-    "create": "node --require @babel/register server/models/db createTables",
+    "test": "NODE_ENV=TEST npm run deletetbtest && npm run createtest && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha --require babel-polyfill --require @babel/register server/tests/**/*.test.js --exit",
+    "start": "NODE_ENV=DEV nodemon --exec babel-node server/app",
+    "create": "node --require @babel/register server/models/create_tables createTables",
     "deletetb": "node --require @babel/register server/models/db deleteTables",
+    "createtest": "node --require @babel/register server/models/create_tables createTables",
+    "deletetbtest": "node --require @babel/register server/models/create_tables deleteTables",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

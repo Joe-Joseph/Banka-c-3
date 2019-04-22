@@ -3,12 +3,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+if (process.env.NODE_ENV === 'DEV') {
+  module.exports = new Pool({
+    connectionString: process.env.DATABASE_DEV,
+  });
+}
 
-pool.on('connect', () => {
-  console.log('connected to db');
-});
-
-export default pool;
+if (process.env.NODE_ENV === 'TEST') {
+  module.exports = new Pool({
+    connectionString: process.env.DATABASE_TEST,
+  });
+}
