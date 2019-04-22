@@ -27,5 +27,6 @@ module.exports = {
     "radix":0,
     "no-dupe-keys": 0,
     "no-plusplus": 0,
+    "import/no-mutable-exports": 0,
   },
 };
