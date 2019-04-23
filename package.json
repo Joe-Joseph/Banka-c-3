@@ -8,7 +8,7 @@
     "dev": "nodemon --exec babel-node server/app",
     "start": "NODE_ENV=DEV npm run create && babel-node server/app",
     "prod": "concurrently \"npm run create\" \"babel-node server/app.js\" ",
-    "create": "NODE_ENV=DEV node --require @babel/register server/models/create_tables createTables",
+    "create": "node --require @babel/register server/models/create_tables createTables",
     "deletetb": "node --require @babel/register server/models/db deleteTables",
     "createtest": "node --require @babel/register server/models/create_tables createTables",
     "deletetbtest": "node --require @babel/register server/models/create_tables deleteTables",
@@ -49,7 +49,6 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "make-runnable": "^1.3.6",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.0.0"
