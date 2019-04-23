@@ -1,6 +1,17 @@
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
-import pool from '../config/connection';
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_DEV,
+});
+
+pool.on('connect', () => {
+  console.log('connected to the db');
+});
 
 class Dbquery {
   // FETCH ALL FROM USERS
