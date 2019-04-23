@@ -6,20 +6,20 @@
 bellow There is all the features of Banka app
 
 **Banka features**
-  1. Users can sign up.
-  2. Users can login.
-  3. Logged in User can create bank account.
-  4. Cahier can make debit transaction.
-  5. Cahier can make credit transaction.
-  6. Admin can change account status, make it draft, activate, or dormant.
-  7. Admin or cashier can delete an account.
-  8. User can view account transaction history.
-  9. User can view a specific account transaction.
-  10. User can view account details.
-  11. Admin/staff can view a list of accounts owned by a specific user.
-  12. Staff/Admin can view all bank accounts
-  13. Staff/Admin can view all active bank accounts.
-  13. Staff/Admin can view all dormant bank accounts.
+  * Users can sign up.
+  * Users can login.
+  * Logged in User can create bank account.
+  * Cahier can make debit transaction.
+  * Cahier can make credit transaction.
+  * Admin can change account status, make it draft, activate, or dormant.
+  * Admin or cashier can delete an account.
+  * User can view account transaction history.
+  * User can view a specific account transaction.
+  * User can view account details.
+  * Admin/staff can view a list of accounts owned by a specific user.
+  * Staff/Admin can view all bank accounts
+  * Staff/Admin can view all active bank accounts.
+  * Staff/Admin can view all dormant bank accounts.
   
   ## Documentation
   
