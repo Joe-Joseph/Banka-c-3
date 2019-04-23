@@ -1,15 +1,7 @@
-import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import pool from '../config/connection';
 
 dotenv.config();
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_DEV,
-});
-
-pool.on('connect', () => {
-  console.log('connected to the db');
-});
 
 export const createTables = () => {
   const users = `CREATE TABLE IF NOT EXISTS

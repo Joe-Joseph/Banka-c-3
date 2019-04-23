@@ -1,14 +1,30 @@
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
-import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import { Pool } from 'pg';
 
 dotenv.config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_DEV,
-});
+let pool;
 
+if (process.env.NODE_ENV === 'production') {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+  });
+}
+
+if (process.env.NODE_ENV === 'TEST') {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_TEST,
+  });
+} else {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_DEV,
+  });
+}
+
+
+console.log({ environment: process.env.NODE_ENV });
 pool.on('connect', () => {
   console.log('connected to the db');
 });

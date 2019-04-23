@@ -8,7 +8,7 @@
     "dev": "nodemon --exec babel-node server/app",
     "start": "NODE_ENV=DEV npm run create && babel-node server/app",
     "prod": "concurrently \"npm run create\" \"babel-node server/app.js\" ",
-    "create": "node --require @babel/register server/models/create_tables createTables",
+    "create": "NODE_ENV=DEV node --require @babel/register server/models/create_tables createTables",
     "deletetb": "node --require @babel/register server/models/db deleteTables",
     "createtest": "node --require @babel/register server/models/create_tables createTables",
     "deletetbtest": "node --require @babel/register server/models/create_tables deleteTables",
