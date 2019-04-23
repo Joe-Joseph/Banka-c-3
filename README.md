@@ -46,7 +46,7 @@ bellow There is all the features of Banka app
  
  ## Setup
   1. Clone the repository
-     ```https://github.com/Joe-Joseph/Banka.git```
+     ```https://github.com/Joe-Joseph/Banka-c-3.git```
      
   2. Install dependencies
   
