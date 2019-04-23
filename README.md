@@ -66,19 +66,6 @@ bellow There is all the features of Banka app
  To run the application test run the following command in terminal
  
  ```npm test```
- 
-## Technology use
-
-**Frontend**
-  * JavaScript
-  * HTML
-  * CSS
-
-**Backend**
-  * Node
-  * Express
-  * mocha
-  * chai
 
 ## Author
 Nkurunziza Joseph
