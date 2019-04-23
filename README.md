@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=develop)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop)
-# Banka
-**Banka** is a banking application that powers banking operations like account creation, customer deposit and withdrawals..
+## Banka-c-3 [![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=develop)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop)
+
+# Description
+
+**Banka** is a banking application that powers banking operations like account creation, customer deposit and withdrawals.
+bellow There is all the features of Banka app
 
 **Banka features**
   1. Users can sign up.
@@ -17,31 +20,10 @@
   12. Staff/Admin can view all bank accounts
   13. Staff/Admin can view all active bank accounts.
   13. Staff/Admin can view all dormant bank accounts.
-
-**Prerequisites**
-  * Node
-  * Postman
   
-**Setup**
-  1. Clone the repository
-     ```https://github.com/Joe-Joseph/Banka.git```
-     
-  2. Install dependencies
+  ## Documentation
   
-     ```npm install```
-     
-  3. Start the server
-  
-     ```npm start```
-  
-  4. Use Postman to test api on ```localhost:4000```
-  
- **Run test**
- To run the application test run the following command in terminal
- 
- ```npm test```
- 
- **Endpoints**
+   **Endpoints**
  
  Method | Endpoint | Functionality
  -------| -------- | -------------
@@ -62,7 +44,30 @@
  GET | /api/v2/account?status=active | View all active accounts
  GET | /api/v2/account?status=dormant | View all dormant accounts
  
-**Technology used**
+ ## Setup
+  1. Clone the repository
+     ```https://github.com/Joe-Joseph/Banka.git```
+     
+  2. Install dependencies
+  
+     ```npm install```
+     
+  3. Start the server
+  
+     ```npm start```
+  
+  4. Use Postman to test api on ```localhost:4000```
+
+## Prerequisites
+  * Node
+  * Postman
+  
+ ## Testing
+ To run the application test run the following command in terminal
+ 
+ ```npm test```
+ 
+## Technology use
 
 **Frontend**
   * JavaScript
@@ -75,5 +80,5 @@
   * mocha
   * chai
 
-**Author**
+## Author
 Nkurunziza Joseph
