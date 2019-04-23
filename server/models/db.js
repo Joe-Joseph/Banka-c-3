@@ -63,5 +63,3 @@ export const deleteTables = () => {
     process.exit(0);
   });
 };
-
-require('make-runnable');
