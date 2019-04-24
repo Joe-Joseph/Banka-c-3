@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=TEST npm run deletetb && npm run create && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha --require babel-polyfill --require @babel/register server/tests/**/*.test.js --exit",
     "dev": "NODE_ENV=DEV nodemon --exec babel-node server/app",
-    "start": "NODE_ENV=DEV npm run create && NODE_ENV=DEV babel-node server/app",
+    "start": "NODE_ENV=DEV npm run create && NODE_ENV=DEV node --require @babel/register server/app",
     "create": "NODE_ENV=DEV node --require @babel/register server/models/db createTables",
     "deletetb": "NODE_ENV=DEV node --require @babel/register server/models/db deleteTables",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
