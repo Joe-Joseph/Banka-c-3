@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'TEST') {
 
 if (process.env.NODE_ENV === 'production') {
   pool = new Pool({
-    connectionString: process.env.DATABASE_prod,
+    connectionString: process.env.DATABASE_URL,
   });
 }
 
