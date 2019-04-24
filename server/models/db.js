@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import pool from '../config/connection';
+
+dotenv.config();
 
 export const createTables = () => {
   const users = `CREATE TABLE IF NOT EXISTS
@@ -60,5 +63,3 @@ export const deleteTables = () => {
     process.exit(0);
   });
 };
-
-require('make-runnable');

@@ -1,6 +1,33 @@
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
-import pool from '../config/connection';
+import dotenv from 'dotenv';
+import { Pool } from 'pg';
+
+dotenv.config();
+
+let pool;
+
+if (process.env.NODE_ENV === 'production') {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+  });
+}
+
+if (process.env.NODE_ENV === 'TEST') {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_TEST,
+  });
+} else {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_DEV,
+  });
+}
+
+
+console.log({ environment: process.env.NODE_ENV });
+pool.on('connect', () => {
+  console.log('connected to the db');
+});
 
 class Dbquery {
   // FETCH ALL FROM USERS
@@ -119,6 +146,20 @@ class Dbquery {
   async fetchAll() {
     const selectAll = 'SELECT accounts.createdon, accounts.accountnumber, accounts.type, accounts.status, accounts.balance, users.email FROM accounts, users';
     const result = await pool.query(selectAll);
+    return result;
+  }
+
+  // GET ACCOUNTS FOR A SPECIFIC USER
+  async fetchAccountsForUser(email) {
+    const selectAllAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE users.email=$1';
+    const result = pool.query(selectAllAccounts, [email]);
+    return result;
+  }
+
+  // VIEW ACTIVE ACCOUNT
+  async fetchAccountsByStatus(data) {
+    const selectActiveAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE accounts.status=$1';
+    const result = pool.query(selectActiveAccounts, [data.status]);
     return result;
   }
 }
