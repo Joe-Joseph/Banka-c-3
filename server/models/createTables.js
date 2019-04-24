@@ -37,7 +37,6 @@ const sql = `CREATE TABLE IF NOT EXISTS
 
 pool.query(sql).then(() => {
   console.log('Tables created successfully');
-  // pool.end();
 }).catch((err) => {
   console.log(err);
   process.exit(0);

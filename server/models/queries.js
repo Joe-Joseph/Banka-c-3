@@ -13,8 +13,8 @@ class Dbquery {
   // SAVE USER INTO USERS
   async signup(data) {
     const newUser = {
-      firstname: data.firstname,
-      lastname: data.lastname,
+      firstname: data.firstName,
+      lastname: data.lastName,
       email: data.email.toLowerCase(),
       password: bcrypt.hashSync(data.password, 10),
       type: data.type,

@@ -1,25 +1,25 @@
 import express from 'express';
-import signupCtrl from '../controllers/users';
-import accountCtrl from '../controllers/accounts';
-import transactionCtrl from '../controllers/transactions';
+import Users from '../controllers/users';
+import Accounts from '../controllers/accounts';
+import Transactions from '../controllers/transactions';
 import auth from '../middleware/auth';
 
 const router = express.Router();
 
-router.post('/auth/signup', signupCtrl.signup);
-router.post('/auth/signin', signupCtrl.login);
+router.post('/auth/signup', Users.signup);
+router.post('/auth/signin', Users.login);
 
-router.post('/accounts', auth, accountCtrl.createAccount);
-router.patch('/accounts/:accountnumber', auth, accountCtrl.updateAccount);
-router.delete('/accounts/:accountnumber', auth, accountCtrl.deleteAccount);
-router.get('/accounts/:accountnumber', auth, accountCtrl.getOneAccount);
-router.get('/accounts', auth, accountCtrl.getAllAccounts);
-router.get('/user/:email/accounts', auth, accountCtrl.getAccountsForOneUser);
-router.get('/account', auth, accountCtrl.getActiveAccounts);
+router.post('/accounts', auth, Accounts.createAccount);
+router.patch('/accounts/:accountnumber', auth, Accounts.updateAccount);
+router.delete('/accounts/:accountnumber', auth, Accounts.deleteAccount);
+router.get('/accounts/:accountnumber', auth, Accounts.getOneAccount);
+router.get('/accounts', auth, Accounts.getAllAccounts);
+router.get('/user/:email/accounts', auth, Accounts.getAccountsForOneUser);
+router.get('/account', auth, Accounts.getActiveAccounts);
 
-router.post('/transactions/:accountnumber/credit', auth, transactionCtrl.creditAccount);
-router.post('/transactions/:accountnumber/debit', auth, transactionCtrl.debitAccount);
-router.get('/transactions/:id', auth, transactionCtrl.getOneTrans);
-router.get('/accounts/:accountnumber/transactions', auth, transactionCtrl.getTransForAcc);
+router.post('/transactions/:accountnumber/credit', auth, Transactions.creditAccount);
+router.post('/transactions/:accountnumber/debit', auth, Transactions.debitAccount);
+router.get('/transactions/:id', auth, Transactions.getOneTrans);
+router.get('/accounts/:accountnumber/transactions', auth, Transactions.getTransForAcc);
 
 export default router;

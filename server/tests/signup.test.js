@@ -10,8 +10,8 @@ describe('signup', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        firstname: 'Joseph',
-        lastname: 'Joe',
+        firstName: 'Joseph',
+        lastName: 'Joe',
         password: '123456',
         email: 'joe@test.com',
       })
