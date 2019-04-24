@@ -1,26 +1,16 @@
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
+import devKeys from './devkeys';
+import testKeys from './testKeys';
+import prodKeys from './prodKeys';
 
-dotenv.config();
-
-let pool;
-
-if (process.env.NODE_ENV === 'DEV') {
-  pool = new Pool({
-    connectionString: process.env.DATABASE_DEV,
-  });
-}
 
 if (process.env.NODE_ENV === 'TEST') {
-  pool = new Pool({
-    connectionString: process.env.DATABASE_TEST,
-  });
+  module.exports = testKeys;
+} else {
+  module.exports = devKeys;
 }
 
 if (process.env.NODE_ENV === 'production') {
-  pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-  });
+  module.exports = prodKeys;
 }
 
-export default pool;
+console.log(process.env.NODE_ENV);

@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import keys from '../config/connection';
 
 const authentication = (req, res, next) => {
   try {
@@ -7,7 +8,7 @@ const authentication = (req, res, next) => {
       return res.status(400).json({ status: 400, error: 'Authentication Failed' });
     }
 
-    const decoded = jwt.verify(header, process.env.secretKey);
+    const decoded = jwt.verify(header, keys.secretKey);
     req.user = decoded;
     next();
   } catch (error) {
