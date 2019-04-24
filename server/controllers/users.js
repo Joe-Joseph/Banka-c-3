@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import keys from '../config/connection';
 import db from '../models/queries';
 import { validateUser, validateUserLogin } from '../helpers/user_validation';
 
@@ -20,7 +21,7 @@ exports.signup = async (req, res) => {
     type: user.rows[0].type,
     isAdmin: user.rows[0].isadmin,
   };
-  const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '24h' });
+  const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
 
   return res.status(201).json({
     status: 201,
@@ -55,7 +56,7 @@ exports.login = async (req, res) => {
         type: user.rows[0].type,
         isAdmin: user.rows[0].isadmin,
       };
-      const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '24h' });
+      const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
       return res.status(200).json({
         status: 200,
         data: token,

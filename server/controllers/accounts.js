@@ -1,6 +1,7 @@
 import { validateAccount } from '../helpers/account_validation';
 import db from '../models/queries';
 
+// CREATE BANK ACCOUNT
 exports.createAccount = async (req, res) => {
   const { error } = validateAccount(req.body);
   if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
@@ -107,4 +108,66 @@ exports.getAllAccounts = async (req, res) => {
     allAccounts.push(foundAccounts);
   }
   return res.status(200).json({ status: 200, data: allAccounts });
+};
+
+// VIEW ACCOUNTS OWNED BY SPECIFIC USER
+exports.getAccountsForOneUser = async (req, res) => {
+  if (req.user.type === 'user') return res.status(401).json({ status: 401, error: 'Only staff can view list of accounts for specific user' });
+
+  const email = req.params.email.toLowerCase();
+  const user = await db.fetchOneUser(req.params);
+
+  if (!user.rows[0]) return res.status(404).json({ status: 404, error: 'User with the given email does not exists' });
+
+  const userAccounts = await db.fetchAccountsForUser(email);
+  if (!userAccounts.rows[0]) return res.status(404).json({ status: 404, error: 'No account' });
+
+  const foundAccounts = [];
+  userAccounts.rows.forEach((row) => {
+    const account = {
+      createdOn: row.createdon,
+      accountNumber: row.accountnumber,
+      type: row.type,
+      status: row.status,
+      balance: row.balance,
+    };
+    foundAccounts.push(account);
+  });
+
+  return res.status(200).json({ status: 200, data: foundAccounts });
+};
+
+// GET ALL ACTIVE ACCOUNTS
+exports.getActiveAccounts = async (req, res) => {
+  if (req.user.type === 'user') {
+    return res.status(401).json({
+      status: 401,
+      error: 'Only staff can view active accounts',
+    });
+  }
+
+  const ActiveAccounts = await db.fetchAccountsByStatus(req.query);
+  if (!ActiveAccounts.rows[0]) {
+    return res.status(404).json({
+      status: 404,
+      error: 'No account found',
+    });
+  }
+
+  const foundActiveAccounts = [];
+  ActiveAccounts.rows.forEach((row) => {
+    const active = {
+      createdOn: row.createdon,
+      accountNumber: row.accountnumber,
+      ownerEmail: row.email,
+      type: row.type,
+      status: row.status,
+      balance: row.balance,
+    };
+    foundActiveAccounts.push(active);
+  });
+  return res.status(200).json({
+    status: 200,
+    data: foundActiveAccounts,
+  });
 };
