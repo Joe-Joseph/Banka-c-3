@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 import pool from './createTables';
 
-console.log('working');
 const admin = {
   firstName: 'Emile',
   lastName: 'Joseph',
