@@ -23,5 +23,6 @@ module.exports = {
     "class-methods-use-this": 0,
     "max-len": 0,
     "consistent-return": 0,
+    "import/prefer-default-export": 0,
   },
 };
