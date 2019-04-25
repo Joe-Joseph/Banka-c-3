@@ -20,5 +20,8 @@ module.exports = {
     "no-undef": 0,
     "no-shadow": 0,
     "import/no-extraneous-dependencies":0,
+    "class-methods-use-this": 0,
+    "max-len": 0,
+    "consistent-return": 0,
   },
 };
