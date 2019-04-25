@@ -9,5 +9,6 @@ router.post('/auth/signup', signupCtrl.signup);
 router.post('/auth/signin', signupCtrl.login);
 
 router.post('/accounts', auth, accountCtrl.createAccount);
+router.patch('/accounts/:accountnumber', auth, accountCtrl.updateAccount);
 
 export default router;
