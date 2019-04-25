@@ -19,5 +19,6 @@ module.exports = {
     "no-console": 0,
     "no-undef": 0,
     "no-shadow": 0,
+    "import/no-extraneous-dependencies":0,
   },
 };
