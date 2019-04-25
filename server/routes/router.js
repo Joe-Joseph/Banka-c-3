@@ -7,6 +7,7 @@ import auth from '../middleware/auth';
 const router = express.Router();
 
 router.post('/auth/signup', Users.signup);
+router.post('/auth/user', auth, Users.signupCashier);
 router.post('/auth/signin', Users.login);
 
 router.post('/accounts', auth, Accounts.createAccount);
