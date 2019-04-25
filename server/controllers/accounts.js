@@ -5,7 +5,12 @@ class Accounts {
   // CREATE BANK ACCOUNT
   static async createAccount(req, res) {
     const { error } = validateAccount(req.body);
-    if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
+    if (error) {
+      return res.status(400).json({
+        status: 400,
+        error: error.details[0].message,
+      });
+    }
     try {
       const acc = await db.createAccount(req.body, req.user);
       return res.status(201).json({
@@ -30,58 +35,69 @@ class Accounts {
     const { error } = validateAccountStatus(req.body);
     if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
     try {
+      if (req.user.type === 'user') {
+        console.log(req.user.type);
+        return res.status(403).json({
+          status: 403,
+          error: 'Only Cashier and admin can update an account status',
+        });
+      }
       const accountNumber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accountNumber);
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
 
-      if (req.user.type === 'user' || req.user.type === '') {
-        return res.status(401).json({
-          status: 401,
-          error: 'Only Cashier and admin can update an account status',
-        });
-      }
-
       if (account.rows[0].status === req.body.status) {
-        return res.status(400).json({ status: 400, error: `Your status is already ${req.body.status}` });
+        return res.status(409).json({
+          status: 409,
+          error: `This account status is already ${req.body.status}`,
+        });
       }
 
       await db.updateAccStatus(req.body, accountNumber);
       return res.status(200).json({
         status: 200,
-        message: `Your account status is now ${req.body.status}`,
+        message: `This account status is now ${req.body.status}`,
         data: {
           accountNumber,
           status: req.body.status,
         },
       });
     } catch (err) {
-      return res.status(500).json({ status: 500, error: err });
+      return res.status(500).json({ status: 500, error: 'Server Error' });
     }
   }
 
   // DELETE SPECIFIC ACCOUNT
   static async deleteAccount(req, res) {
     try {
+      if (req.user.type !== 'staff') {
+        console.log(req.user.type);
+        return res.status(403).json({
+          status: 403,
+          error: 'Only Cashier and admin can delete an account',
+        });
+      }
+
       const accountNumber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accountNumber);
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
 
-      if (req.user.type !== 'staff') {
-        return res.status(401).json({ status: 401, error: 'Only Cashier and admin can delete an account' });
+      if (account.rows[0].balance > 0) {
+        return res.status(403).json({ status: 403, error: 'Can not delete account with amount on balance' });
       }
 
       await db.deleteTrans(accountNumber);
       await db.deleteAcc(accountNumber);
       return res.status(200).json({ status: 200, message: 'account successfully deleted' });
     } catch (error) {
-      res.status(500).json({ status: 500, error });
+      res.status(500).json({ status: 500, error: 'Server Error' });
     }
   }
 
   // GET SPECIFIC ACCOUNT DETAILS
   static async getOneAccount(req, res) {
     const result = await db.fetchOneAccDetails(parseInt(req.params.accountnumber), req.user);
-    if (!result) return res.status(404).json({ status: 404, error: 'No account' });
+    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'You have no such account' });
     return res.status(200).json({
       status: 200,
       data: {
@@ -97,10 +113,11 @@ class Accounts {
 
   // GET ALL ACCOUNTS
   static async getAllAccounts(req, res) {
-    if (req.user.type === 'user') return res.status(401).json({ status: 401, error: 'Only staff can view list of bank accounts' });
+    console.log(req.user.type);
+    if (req.user.type === 'user') return res.status(403).json({ status: 403, error: 'Only staff can view list of bank accounts' });
 
     const result = await db.fetchAll();
-    if (!result) return res.status(404).json({ status: 404, error: 'No account' });
+    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'No account' });
 
     const allAccounts = [];
     for (let i = 0; i < result.rows.length; i++) {
@@ -114,17 +131,30 @@ class Accounts {
       };
       allAccounts.push(foundAccounts);
     }
-    return res.status(200).json({ status: 200, data: allAccounts });
+    return res.status(200).json({
+      status: 200,
+      data: allAccounts,
+    });
   }
 
   // VIEW ACCOUNTS OWNED BY SPECIFIC USER
   static async getAccountsForOneUser(req, res) {
-    if (req.user.type === 'user') return res.status(401).json({ status: 401, error: 'Only staff can view list of accounts for specific user' });
+    if (req.user.type === 'user') {
+      return res.status(403).json({
+        status: 403,
+        error: 'Only staff can view list of accounts for specific user',
+      });
+    }
 
-    const email = req.params.email.toLowerCase();
+    const email = req.params.email.toLowerCase().trim();
     const user = await db.fetchOneUser(req.params);
 
-    if (!user.rows[0]) return res.status(404).json({ status: 404, error: 'User with the given email does not exists' });
+    if (!user.rows[0]) {
+      return res.status(404).json({
+        status: 404,
+        error: 'User with the given email does not exists',
+      });
+    }
 
     const userAccounts = await db.fetchAccountsForUser(email);
     if (!userAccounts.rows[0]) return res.status(404).json({ status: 404, error: 'No account' });
@@ -147,6 +177,7 @@ class Accounts {
   // GET ALL ACTIVE ACCOUNTS
   static async getActiveAccounts(req, res) {
     if (req.user.type === 'user') {
+      console.log(req.user.type);
       return res.status(401).json({
         status: 401,
         error: 'Only staff can view active accounts',

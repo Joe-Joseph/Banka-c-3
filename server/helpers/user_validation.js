@@ -4,7 +4,7 @@ export const validateUser = (user) => {
   const userSchema = {
     firstName: Joi.string().min(3).trim().required()
       .regex(/^[A-Za-z_]+$/),
-    lastName: Joi.string().min(3).trim().required()
+    lastName: Joi.string().min(3).required()
       .regex(/^[A-Za-z_]+$/),
     email: Joi.string().email({ minDomainAtoms: 2 }).trim().required(),
     password: Joi.string().min(6).required(),

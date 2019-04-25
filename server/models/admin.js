@@ -2,9 +2,9 @@ import bcrypt from 'bcryptjs';
 import pool from './createTables';
 
 const admin = {
-  firstName: 'Emile',
+  firstName: 'Nkurunziza',
   lastName: 'Joseph',
-  email: 'trueadmin@test.com',
+  email: 'joseph@gmail.com',
   password: bcrypt.hashSync('123456', 10),
   type: 'staff',
   isAdmin: 'true',
