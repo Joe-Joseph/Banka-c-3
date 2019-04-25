@@ -3,7 +3,7 @@
 # Description
 
 **Banka** is a banking application that powers banking operations like account creation, customer deposit and withdrawals.
-bellow There is all the features of Banka app
+bellow There is all the features of Banka app:
 
 **Banka features**
   * Users can sign up.

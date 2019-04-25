@@ -7,7 +7,6 @@ const deletesql = `DROP TABLE IF EXISTS users CASCADE;
 
 pool.query(deletesql).then(() => {
   console.log('Deleted tables successfully');
-  // pool.end();
 }).catch((err) => {
   console.log(err);
   process.exit(0);
