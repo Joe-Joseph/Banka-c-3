@@ -10,5 +10,6 @@ router.post('/auth/signin', signupCtrl.login);
 
 router.post('/accounts', auth, accountCtrl.createAccount);
 router.patch('/accounts/:accountnumber', auth, accountCtrl.updateAccount);
+router.delete('/accounts/:accountnumber', auth, accountCtrl.deleteAccount);
 
 export default router;
