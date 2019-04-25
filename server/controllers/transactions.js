@@ -13,8 +13,12 @@ class Transactions {
       const { error } = validateTransaction(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
 
-      if (req.user.type === 'user' || req.user.isAdmin) {
-        return res.status(401).json({ status: 401, error: 'Only cashier can make transaction' });
+      if (req.user.type === 'user') {
+        return res.status(403).json({ status: 403, error: 'Only cashier can make transaction' });
+      }
+
+      if (account.rows[0].status === 'dormant') {
+        return res.status(403).json({ status: 403, error: 'The account is not active' });
       }
 
       const accountNumber = parseInt(account.rows[0].accountnumber);
@@ -52,8 +56,8 @@ class Transactions {
       const { error } = validateTransaction(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
 
-      if (req.user.type === 'user' || req.user.isAdmin) {
-        return res.status(401).json({ status: 401, error: 'Only cashier can make transaction' });
+      if (req.user.type === 'user') {
+        return res.status(403).json({ status: 403, error: 'Only cashier can make transaction' });
       }
 
       if (account.rows[0].balance < req.body.amount) {
@@ -84,17 +88,18 @@ class Transactions {
     }
   }
 
-  // GET ALL TRANSACTIONS
+  // GET ONE TRANSACTION
   static async getOneTrans(req, res) {
     if (req.user.type !== 'user') {
       return res.status(401).json({ status: 401, error: 'Only user can view his transaction history' });
     }
 
     const result = await db.fetchTransById(parseInt(req.params.id));
-    if (!result) return res.status(404).json({ status: 404, error: 'No transaction found' });
+    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'No transaction found' });
     return res.status(200).json({ status: 200, data: result.rows });
   }
 
+  // GET TRANSACTIONS FOR ONE ACCOUNT
   static async getTransForAcc(req, res) {
     if (req.user.type !== 'user') {
       return res.status(401).json({ status: 401, error: 'Only User can view transactions' });
@@ -105,7 +110,7 @@ class Transactions {
     }
 
     const result = await db.fetchTransForAcc(parseInt(req.params.accountnumber));
-    if (!result) return res.status(404).json({ status: 404, error: 'There is no transaction on this accounts' });
+    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'There is no transaction on this accounts' });
 
     return res.status(200).json({ status: 200, data: result.rows });
   }
