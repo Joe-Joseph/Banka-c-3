@@ -32,7 +32,7 @@ class Accounts {
       const account = await db.fetchOneAcc(accountNumber);
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
 
-      if (req.user.type !== 'staff') {
+      if (req.user.type === 'user' || req.user.type === '') {
         return res.status(401).json({
           status: 401,
           error: 'Only Cashier and admin can update an account status',

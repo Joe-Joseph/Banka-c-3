@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=TEST npm run deletetb && npm run create && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha  --require @babel/register server/tests/**/*.test.js --exit",
+    "test": "NODE_ENV=TEST NODE_ENV=TEST npm run deletetb && NODE_ENV=TEST npm run create && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha --timeout 5000  --require @babel/register server/tests/**/*.test.js --exit",
     "dev": "nodemon --require @babel/register server/app",
     "start": "node --require @babel/register server/app && npm run create",
-    "create": "NODE_ENV=TEST node --require @babel/register server/models/createTables.js",
-    "deletetb": "NODE_ENV=TEST node --require @babel/register server/models/dropTables.js",
+    "create": "node --require @babel/register server/models/createTables.js",
+    "deletetb": "node --require @babel/register server/models/dropTables.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
