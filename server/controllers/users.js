@@ -14,14 +14,13 @@ class Users {
       let user = await db.fetchOneUser(req.body);
       if (user.rows[0]) return res.status(400).json({ status: 400, error: 'Email arleady registered' });
 
-      user = await db.signup(req.body);
+      user = await db.signup(req.body, 'user');
       const payload = {
         id: user.rows[0].id,
         firstname: user.rows[0].firstname,
         lastname: user.rows[0].lastname,
         email: user.rows[0].email,
         type: user.rows[0].type,
-        isAdmin: user.rows[0].isadmin,
       };
       const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
 

@@ -11,17 +11,16 @@ class Dbquery {
   }
 
   // SAVE USER INTO USERS
-  async signup(data) {
+  async signup(data, userType) {
     const newUser = {
       firstname: data.firstName,
       lastname: data.lastName,
       email: data.email.toLowerCase(),
       password: bcrypt.hashSync(data.password, 10),
-      type: data.type,
-      isAdmin: data.isAdmin,
+      type: userType,
     };
-    const insertUserQuery = 'INSERT INTO users (email, firstname, lastname, password, type, isAdmin) VALUES($1,$2,$3,$4,$5,$6) RETURNING *';
-    const result = await pool.query(insertUserQuery, [newUser.email, newUser.firstname, newUser.lastname, newUser.password, newUser.type, newUser.isAdmin]);
+    const insertUserQuery = 'INSERT INTO users (email, firstname, lastname, password, type) VALUES($1,$2,$3,$4,$5) RETURNING *';
+    const result = await pool.query(insertUserQuery, [newUser.email, newUser.firstname, newUser.lastname, newUser.password, newUser.type]);
     return result;
   }
 
