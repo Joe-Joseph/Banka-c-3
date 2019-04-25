@@ -16,7 +16,7 @@ export const validateUser = (user) => {
 
 export const validateUserLogin = (login) => {
   const loginSchema = {
-    email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+    email: Joi.string().email({ minDomainAtoms: 2 }).trim().required(),
     password: Joi.string().min(6).required(),
   };
 
