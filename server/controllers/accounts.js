@@ -1,4 +1,4 @@
-import { validateAccount } from '../helpers/account_validation';
+import { validateAccount, validateAccountStatus } from '../helpers/account_validation';
 import db from '../models/queries';
 
 class Accounts {
@@ -27,6 +27,8 @@ class Accounts {
 
   // UPDATE ACCOUNT STATUS
   static async updateAccount(req, res) {
+    const { error } = validateAccountStatus(req.body);
+    if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
     try {
       const accountNumber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accountNumber);
@@ -37,6 +39,10 @@ class Accounts {
           status: 401,
           error: 'Only Cashier and admin can update an account status',
         });
+      }
+
+      if (account.rows[0].status === req.body.status) {
+        return res.status(400).json({ status: 400, error: `Your status is already ${req.body.status}` });
       }
 
       await db.updateAccStatus(req.body, accountNumber);
