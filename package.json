@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=TEST NODE_ENV=TEST npm run deletetb && NODE_ENV=TEST npm run create && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha --timeout 5000  --require @babel/register server/tests/**/*.test.js --exit",
+    "test": "NODE_ENV=TEST npm run deletetb && NODE_ENV=TEST npm run create && NODE_ENV=TEST npm run admin && NODE_ENV=TEST nyc --reporter=text --reporter=lcov mocha --timeout 5000  --require @babel/register server/tests/**/*.test.js --exit",
     "dev": "nodemon --require @babel/register server/app",
     "start": "npm run create && npm run admin && node --require @babel/register server/app",
     "create": "node --require @babel/register server/models/createTables.js",
