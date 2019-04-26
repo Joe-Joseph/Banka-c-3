@@ -11,16 +11,17 @@ class Dbquery {
   }
 
   // SAVE USER INTO USERS
-  async signup(data, userType) {
+  async signup(data, userType, admin) {
     const newUser = {
       firstname: data.firstName,
       lastname: data.lastName,
       email: data.email.toLowerCase(),
       password: bcrypt.hashSync(data.password, 10),
       type: userType,
+      isAdmin: admin,
     };
-    const insertUserQuery = 'INSERT INTO users (email, firstname, lastname, password, type) VALUES($1,$2,$3,$4,$5) RETURNING *';
-    const result = await pool.query(insertUserQuery, [newUser.email, newUser.firstname, newUser.lastname, newUser.password, newUser.type]);
+    const insertUserQuery = 'INSERT INTO users (email, firstname, lastname, password, type, isAdmin) VALUES($1,$2,$3,$4,$5, $6) RETURNING *';
+    const result = await pool.query(insertUserQuery, [newUser.email, newUser.firstname, newUser.lastname, newUser.password, newUser.type, newUser.isAdmin]);
     return result;
   }
 
@@ -108,9 +109,9 @@ class Dbquery {
   }
 
   // FIND ONE ACCOUNT DETAILS FOR A LOGGED IN USER
-  async fetchOneAccDetails(accNumber, payload) {
-    const queryText = 'SELECT * FROM accounts WHERE accountnumber = $1 AND owner = $2';
-    const response = await pool.query(queryText, [accNumber, payload.id]);
+  async fetchOneAccDetails(accNumber) {
+    const queryText = 'SELECT * FROM accounts WHERE accountnumber = $1';
+    const response = await pool.query(queryText, [accNumber]);
     return response;
   }
 

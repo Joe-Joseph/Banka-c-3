@@ -96,8 +96,15 @@ class Accounts {
 
   // GET SPECIFIC ACCOUNT DETAILS
   static async getOneAccount(req, res) {
-    const result = await db.fetchOneAccDetails(parseInt(req.params.accountnumber), req.user);
-    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'You have no such account' });
+    const result = await db.fetchOneAccDetails(parseInt(req.params.accountnumber));
+    if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
+
+    if (req.user.type !== 'staff' && req.user.id !== result.rows[0].owner) {
+      return res.status(403).json({
+        status: 403,
+        error: 'You are not the owner of the account',
+      });
+    }
     return res.status(200).json({
       status: 200,
       data: {
@@ -139,13 +146,6 @@ class Accounts {
 
   // VIEW ACCOUNTS OWNED BY SPECIFIC USER
   static async getAccountsForOneUser(req, res) {
-    if (req.user.type === 'user') {
-      return res.status(403).json({
-        status: 403,
-        error: 'Only staff can view list of accounts for specific user',
-      });
-    }
-
     const email = req.params.email.toLowerCase().trim();
     const user = await db.fetchOneUser(req.params);
 
@@ -157,7 +157,15 @@ class Accounts {
     }
 
     const userAccounts = await db.fetchAccountsForUser(email);
-    if (!userAccounts.rows[0]) return res.status(404).json({ status: 404, error: 'No account' });
+
+    if (!userAccounts.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
+
+    if (req.user.type !== 'staff' && req.user.id !== userAccounts.rows[0].owner) {
+      return res.status(403).json({
+        status: 403,
+        error: 'You are not the owner of the account',
+      });
+    }
 
     const foundAccounts = [];
     userAccounts.rows.forEach((row) => {
@@ -177,10 +185,9 @@ class Accounts {
   // GET ALL ACTIVE ACCOUNTS
   static async getActiveAccounts(req, res) {
     if (req.user.type === 'user') {
-      console.log(req.user.type);
-      return res.status(401).json({
-        status: 401,
-        error: 'Only staff can view active accounts',
+      return res.status(403).json({
+        status: 403,
+        error: 'Only Admin and cashier can view accounts',
       });
     }
 
