@@ -24,7 +24,7 @@ class Users {
       };
       const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
 
-      return res.status(201).json({
+      return res.header('Authorization', token).status(201).json({
         status: 201,
         data: {
           token,
@@ -101,7 +101,7 @@ class Users {
       };
       const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
 
-      return res.status(201).json({
+      return res.header('Authorization', token).status(201).json({
         status: 201,
         data: {
           token,

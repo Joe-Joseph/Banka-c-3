@@ -29,7 +29,6 @@ describe('signup', () => {
         email: 'joe@test.com',
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status');
         expect(res.body.status).to.equal(201);
@@ -88,7 +87,6 @@ describe('sigin', () => {
         password: '123456',
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status');
         expect(res.body.status).to.equal(200);
