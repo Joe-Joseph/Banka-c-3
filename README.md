@@ -31,14 +31,14 @@ bellow There is all the features of Banka app:
  POST | /api/v2/auth/login | User login
  GET | /api/v2/users | Get all the users
  GET | /api/v2/accounts | Get all the accounts
- POST | /api/v2/accounts | Create bank account
- PATCH | /api/v2/accounts/:accountNumber | Activate or desactivate bank account
+ POST | /api/v2/accounts/ | Create bank account
+ PATCH | /api/v2/accounts/:accountNumber/ | Activate or desactivate bank account
  POST | /api/v2/accounts/:accountNumber/credit | Credit bank account
  POST | /api/v2/accounts/:accountNumber/debit | Debit bank account
  DELETE | /api/v2/accounts/:accountNumber | Delete bank accounts
  GET | /api/v2/accounts/:accountnumber/transactions |View transactions for account
  GET | /api/v2/transactions/:id |View specific transaction
- GET | /api/v2//accounts/:accountnumber | View one account details
+ GET | /api/v2//account/:accountnumber | View one account details
  GET | /api/v2/user/:email/accounts | View a list of accounts owned by a specific user
  GET | /api/v2/accounts | view all bank accounts
  GET | /api/v2/account?status=active | View all active accounts
