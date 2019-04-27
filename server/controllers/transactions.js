@@ -6,6 +6,9 @@ class Transactions {
   static async creditAccount(req, res) {
     try {
       const accNber = parseInt(req.params.accountnumber);
+      if (typeof (accNber) !== 'number') {
+        return res.status(400).json({ status: 400, error: 'Account number must be number' });
+      }
       const account = await db.fetchOneAcc(accNber);
 
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
@@ -13,7 +16,7 @@ class Transactions {
       const { error } = validateTransaction(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
 
-      if (req.user.type === 'user') {
+      if (req.user.type === 'user' || req.user.isAdmin) {
         return res.status(403).json({ status: 403, error: 'Only cashier can make transaction' });
       }
 
@@ -49,6 +52,9 @@ class Transactions {
   static async debitAccount(req, res) {
     try {
       const accNber = parseInt(req.params.accountnumber);
+      if (typeof (accNber) !== 'number') {
+        return res.status(400).json({ status: 400, error: 'Account number must be number' });
+      }
       const account = await db.fetchOneAcc(accNber);
 
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
@@ -56,7 +62,7 @@ class Transactions {
       const { error } = validateTransaction(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
 
-      if (req.user.type === 'user') {
+      if (req.user.type === 'user' || req.user.isAdmin) {
         return res.status(403).json({ status: 403, error: 'Only cashier can make transaction' });
       }
 

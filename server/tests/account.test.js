@@ -102,28 +102,25 @@ describe('Accounts', () => {
   });
 });
 
-//   it('Update account', (done) => {
-//     chai.request(app)
-//       .get('/api/v2/accounts')
-//       .set('Authorization', token)
-//       .end((err, res) => {
-//         // console.log(res.body);
-//         chai.request(app)
-//           .post(`/api/v2/accounts/${res.body.data.accountNumber}`)
-//           .set('Authorization', token)
-//           .send({
-//             status: '',
-//           })
-//           .end((err, res) => {
-//             console.log(res.body);
-//             expect(res.body).to.be.an('object');
-//             expect(res.body).to.have.property('status');
-//             expect(res.body).to.have.property('data');
-//             expect(res.body.status).to.be.equal(400);
-//             done();
-//           });
-//       });
-//   });
+// it('Update account', (done) => {
+//   chai.request(app)
+//     .get('/api/v2/accounts')
+//     .set('Authorization', token)
+//     .end((err, res) => {
+//       // console.log(res.body);
+//       chai.request(app)
+//         .patch(`/api/v2/accounts/${res.body.data.accountNumber}`)
+//         .set('Authorization', token)
+//         .send({
+//           status: '',
+//         })
+//         .end((err, res) => {
+//           console.log(res.body);
+//           expect(res.body).to.be.an('object');
+//           expect(res.body).to.have.property('status');
+//           expect(res.body).to.have.property('data');
+//           expect(res.body.status).to.be.equal(400);
+//           done();
+//         });
+//     });
 // });
-
-// })

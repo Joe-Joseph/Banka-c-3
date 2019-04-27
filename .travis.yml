@@ -10,7 +10,7 @@ services:
   - postgresql
 
 before_install:
-  - psql -c 'create database bankatestdb' -U postgres
+  - psql -c 'create database bankatest' -U postgres
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

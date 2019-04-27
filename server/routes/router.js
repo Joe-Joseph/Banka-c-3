@@ -10,10 +10,10 @@ router.post('/auth/signup', Users.signup);
 router.post('/auth/user', auth, Users.signupCashier);
 router.post('/auth/signin', Users.login);
 
-router.post('/accounts', auth, Accounts.createAccount);
-router.patch('/accounts/:accountnumber', auth, Accounts.updateAccount);
+router.post('/accounts/', auth, Accounts.createAccount);
+router.patch('/accounts/:accountnumber/', auth, Accounts.updateAccount);
 router.delete('/accounts/:accountnumber', auth, Accounts.deleteAccount);
-router.get('/accounts/:accountnumber', auth, Accounts.getOneAccount);
+router.get('/account/:accountnumber', auth, Accounts.getOneAccount);
 router.get('/accounts', auth, Accounts.getAllAccounts);
 router.get('/user/:email/accounts', auth, Accounts.getAccountsForOneUser);
 router.get('/account', auth, Accounts.getActiveAccounts);
