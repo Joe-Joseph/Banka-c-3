@@ -35,7 +35,7 @@ class Dbquery {
       createdOn: moment().format('LL'),
       owner: userId,
       type: data.type,
-      status: 'Active',
+      status: 'active',
       balance: 0,
     };
     const createAccQuery = 'INSERT INTO accounts (accountnumber, createdon, owner, type, status, balance) VALUES($1,$2,$3,$4,$5,$6) RETURNING *';
@@ -117,7 +117,7 @@ class Dbquery {
 
   // GET ALL ACCOUNTS
   async fetchAll() {
-    const selectAll = 'SELECT accounts.createdon, accounts.accountnumber, accounts.type, accounts.status, accounts.balance, users.email FROM accounts, users';
+    const selectAll = 'SELECT accounts.createdon as createdOn, accounts.accountnumber as accountNumber, accounts.type, accounts.status, accounts.balance, users.email as ownerEmail FROM accounts, users';
     const result = await pool.query(selectAll);
     return result;
   }
@@ -126,6 +126,12 @@ class Dbquery {
   async fetchAccountsForUser(email) {
     const selectAllAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE users.email=$1';
     const result = pool.query(selectAllAccounts, [email]);
+    return result;
+  }
+
+  async fetchAccountsByIdForUser(accNumber, id) {
+    const selectAllAccounts = 'SELECT * FROM accounts INNER JOIN users ON accounts.owner=users.id WHERE accounts.accountnumber=$1 AND users.id=$2';
+    const result = pool.query(selectAllAccounts, [accNumber, id]);
     return result;
   }
 
