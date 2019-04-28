@@ -36,7 +36,7 @@ class Accounts {
     if (error) return res.status(400).json({ status: 400, error: error.details[0].message });
     try {
       if (req.user.type === 'user') {
-        console.log(req.user.type);
+        // console.log(req.user.type);
         return res.status(403).json({
           status: 403,
           error: 'Only Cashier and admin can update an account status',
@@ -124,27 +124,15 @@ class Accounts {
 
   // GET ALL ACCOUNTS
   static async getAllAccounts(req, res) {
-    console.log(req.user.type);
+    // console.log(req.user.type);
     if (req.user.type === 'user') return res.status(403).json({ status: 403, error: 'Only staff can view list of bank accounts' });
 
     const result = await db.fetchAll();
     if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'No account' });
 
-    const allAccounts = [];
-    for (let i = 0; i < result.rows.length; i++) {
-      const foundAccounts = {
-        createdOn: result.rows[i].createdon,
-        accountNumber: result.rows[i].accountnumber,
-        ownerEmail: result.rows[i].email,
-        type: result.rows[i].type,
-        status: result.rows[i].status,
-        balance: result.rows[i].balance,
-      };
-      allAccounts.push(foundAccounts);
-    }
     return res.status(200).json({
       status: 200,
-      data: allAccounts,
+      data: result.rows,
     });
   }
 
