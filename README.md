@@ -1,4 +1,4 @@
-## Banka-c-3 [![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Maintainability](https://api.codeclimate.com/v1/badges/ed1c1d76020b94a4da7a/maintainability)](https://codeclimate.com/github/Joe-Joseph/Banka-c-3/maintainability)
+## Banka-c-3 [![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=develop)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/ed1c1d76020b94a4da7a/maintainability)](https://codeclimate.com/github/Joe-Joseph/Banka-c-3/maintainability)
 
 # Description
 
@@ -32,10 +32,10 @@ bellow There is all the features of Banka app:
  GET | /api/v2/users | Get all the users
  GET | /api/v2/accounts | Get all the accounts
  POST | /api/v2/accounts/ | Create bank account
- PATCH | /api/v2/accounts/:accountNumber/ | Activate or desactivate bank account
- POST | /api/v2/accounts/:accountNumber/credit | Credit bank account
- POST | /api/v2/accounts/:accountNumber/debit | Debit bank account
- DELETE | /api/v2/accounts/:accountNumber | Delete bank accounts
+ PATCH | /api/v2/accounts/:accountnumber/ | Activate or desactivate bank account
+ POST | /api/v2/accounts/:accountnumber/credit | Credit bank account
+ POST | /api/v2/accounts/:accountnumber/debit | Debit bank account
+ DELETE | /api/v2/accounts/:accountnumber | Delete bank accounts
  GET | /api/v2/accounts/:accountnumber/transactions |View transactions for account
  GET | /api/v2/transactions/:id |View specific transaction
  GET | /api/v2//account/:accountnumber | View one account details
