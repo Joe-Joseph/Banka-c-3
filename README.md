@@ -1,4 +1,4 @@
-## Banka-c-3 [![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=develop)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/ed1c1d76020b94a4da7a/maintainability)](https://codeclimate.com/github/Joe-Joseph/Banka-c-3/maintainability)
+## Banka-c-3 [![Build Status](https://travis-ci.org/Joe-Joseph/Banka-c-3.svg?branch=develop)](https://travis-ci.org/Joe-Joseph/Banka-c-3) [![Coverage Status](https://coveralls.io/repos/github/Joe-Joseph/Banka-c-3/badge.svg?branch=)](https://coveralls.io/github/Joe-Joseph/Banka-c-3?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/ed1c1d76020b94a4da7a/maintainability)](https://codeclimate.com/github/Joe-Joseph/Banka-c-3/maintainability)
 
 # Description
 
