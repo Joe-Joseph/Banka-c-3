@@ -15,5 +15,5 @@ pool.query(Addadmin, [admin.email, admin.firstName, admin.lastName, admin.passwo
   .then((result) => {
     console.log('Admin created');
   }).catch((error) => {
-    console.log('There was an error');
+    console.log(error);
   });

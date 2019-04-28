@@ -183,7 +183,7 @@ describe('Accounts', () => {
             status: 'dormant',
           })
           .end((err, res) => {
-            console.log(res.body);
+            // console.log(res.body);
             expect(res.body).to.be.an('object');
             expect(res.body).to.have.property('status');
             expect(res.body).to.have.property('error');
