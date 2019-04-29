@@ -65,7 +65,7 @@ class Transactions {
         return res.status(400).json({ status: 400, error: 'Account number must be number' });
       }
 
-      if (req.params.accountnumber.length > 6) {
+      if (req.params.accountnumber.length > 9) {
         return res.status(400).json({ status: 400, error: 'Account number must be 6 digits' });
       }
 
