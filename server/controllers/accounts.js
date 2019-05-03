@@ -42,6 +42,11 @@ class Accounts {
           error: 'Only Cashier and admin can update an account status',
         });
       }
+
+      if (typeof req.params.accountnumber !== 'number' && isNaN(req.params.accountnumber)) {
+        return res.status(400).json({ status: 400, error: 'Account number must be number' });
+      }
+
       const accountNumber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accountNumber);
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
@@ -78,6 +83,10 @@ class Accounts {
         });
       }
 
+      if (typeof req.params.accountnumber !== 'number' && isNaN(req.params.accountnumber)) {
+        return res.status(400).json({ status: 400, error: 'Account number must be number' });
+      }
+
       const accountNumber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accountNumber);
       if (!account.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
@@ -97,6 +106,10 @@ class Accounts {
   // GET SPECIFIC ACCOUNT DETAILS
   static async getOneAccount(req, res) {
     try {
+      if (typeof req.params.accountnumber !== 'number' && isNaN(req.params.accountnumber)) {
+        return res.status(400).json({ status: 400, error: 'Account number must be number' });
+      }
+
       const result = await db.fetchOneAccDetails(parseInt(req.params.accountnumber));
       if (!result.rows[0]) return res.status(404).json({ status: 404, error: 'Account not found' });
 

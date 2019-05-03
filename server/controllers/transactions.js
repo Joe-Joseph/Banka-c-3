@@ -65,10 +65,6 @@ class Transactions {
         return res.status(400).json({ status: 400, error: 'Account number must be number' });
       }
 
-      if (req.params.accountnumber.length > 9) {
-        return res.status(400).json({ status: 400, error: 'Account number must be 6 digits' });
-      }
-
       const accNber = parseInt(req.params.accountnumber);
       const account = await db.fetchOneAcc(accNber);
 
@@ -130,7 +126,7 @@ class Transactions {
       }
 
       if (!parseInt(req.params.accountnumber)) {
-        return res.status(404).json({ status: 404, error: 'Account does not exists' });
+        return res.status(404).json({ status: 404, error: 'Enter account number please' });
       }
 
       const accForUser = await db.fetchAccountsByIdForUser(parseInt(req.params.accountnumber), req.user.id);
