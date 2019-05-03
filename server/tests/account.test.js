@@ -1,6 +1,9 @@
 import chai from 'chai';
+import dotenv from 'dotenv';
 import chaiHttp from 'chai-http';
 import app from '../app';
+
+dotenv.config();
 
 const { expect } = chai;
 chai.use(chaiHttp);
@@ -12,12 +15,13 @@ describe('Accounts', () => {
   before('Admin signin', (done) => {
     const user = {
       email: 'joseph@gmail.com',
-      password: '123456',
+      password: JSON.stringify(process.env.password),
     };
     chai.request(app)
       .post('/api/v2/auth/signin')
       .send(user)
       .end((err, res) => {
+        // console.log(res.body);
         token = res.body.data;
         done();
       });
