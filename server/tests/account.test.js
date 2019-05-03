@@ -168,7 +168,7 @@ describe('Accounts', () => {
             expect(res.body).to.be.an('object');
             expect(res.body).to.have.property('status');
             expect(res.body).to.have.property('error');
-            expect(res.body.status).to.be.equal(500);
+            expect(res.body.status).to.be.equal(400);
             done();
           });
       });
