@@ -1,0 +1,689 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight: 1.5
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header{
+    background-image: linear-gradient(-90deg,#780206, #061161);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+}
+header h1{
+    color: white;
+    outline: none;
+    border: none;
+}
+header nav{
+    float: right;
+}
+
+#logo{
+    float: left;
+}
+
+#logo a{
+    text-decoration: none;
+}
+
+ul{
+    padding-top: 20px;
+    margin: 10px;
+}
+
+header ul li{
+    display: inline;
+    padding: 0 5px 0 5px;
+}
+
+header ul li a{
+    text-decoration: none;
+    color: #d2cece;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header ul li a:hover{
+    color: white;
+}
+.active{
+    color: white
+}
+
+header .menu{
+    display: none;
+}
+
+.close{
+    display: none;
+}
+
+.navbar{
+    display: none;
+}
+
+.avatar{
+    position: absolute;
+    top: 10px;
+    right: 66px;
+    width: 50px;
+    height: 50px;
+}
+.avatar img{
+    width: 100%;
+    height: 100%;
+}
+
+header #pro{
+    margin-right: 60px;
+    font-size: 14px;
+}
+
+.intro{
+    background-color: #061161;
+    width: 60%;
+    top: 74px;
+    position: fixed;
+    left: 0px;
+    color: white;
+    bottom: 0px;
+}
+
+.intro p{
+    font-size: 18px;
+    padding-bottom: 20px;
+    line-height: 1.5;
+}
+section button{
+    background-image: linear-gradient(-90deg, #061161, #780206);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    outline: none
+}
+section button:hover{
+    font-weight: bold;
+}
+
+#welcome{
+    padding-top: 180px;
+    padding-left: 30px
+}
+
+.right-side{
+    width: 40%;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    top:74px;
+}
+
+.right-side img{
+    width: 100%;
+    height: 100%;
+}
+
+#photo{
+    width: 100%;
+    height: 100%;
+}
+
+/*Sign up*/
+
+.signup{
+    background-color: white;
+    background-size: cover;
+    position: absolute;
+    color: white;
+    width: 100%;
+    left: 0;
+    top: 74px;
+    min-height: 89%;
+}
+
+.allForm{
+    position: absolute;
+    right: 420px;
+    top: 40px;
+    width: 30%;
+    background: white;
+    box-shadow: 0 4px 4px #ccc;
+    border-radius: 8px;
+}
+.allForm h2{
+    background-color: #3c0935;
+    margin-top: 0;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 18px;
+}
+
+.allForm .inputBox{
+    position: relative;
+}
+
+.allForm .inputBox input{
+    width: 82%;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    padding: 15px 4px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f16b0a;
+    margin-bottom: 7px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #bfc0c4;
+    background-color: transparent;
+    
+   }
+
+.allForm .inputBox select{
+    width: 85%;
+    margin-left: 30px;
+    margin-top: 15px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #061161;
+    margin-bottom: 7px;
+    outline: none;
+    border: 1px solid grey;
+    background-color: transparent;
+   }  
+
+.allForm .inputBox label{
+    position: absolute;
+    left: 30px;
+    top: 0;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #061161;
+    pointer-events: none;
+    transition: .6s;
+}
+
+.allForm .inputBox input:focus ~ label,
+.allForm .inputBox input:valid ~ label
+
+{
+    top: -12px;
+    left: 30px;
+    font-size: 12px;
+}
+
+.allForm input[type="submit"]{
+    background: linear-gradient(-90deg, #061161, #780206);
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #fff;
+    width: 95%;
+    outline: none;
+}
+
+.allForm input[type="submit"]:hover{
+    background-color: rgb(47, 47, 206);
+}
+
+/*Sign in page*/
+
+.signin{
+    background-color: white;
+    background-size: cover;
+    position: absolute;
+    color: white;
+    width: 100%;
+    left: 0;
+    top: 74px;
+    min-height: 89%;
+}
+
+#signin{
+    margin-top: 90px;
+}
+
+/*History transctions page*/
+/*Styling the table*/
+.table-responsive {
+    width: 85%;
+    margin-top: 10px;
+    z-index: 0;
+    margin-left: 5%;
+    box-shadow: 0 5px 15px #abaaaf;
+    padding-bottom: 20px;
+}
+.table-responsive thead{
+    border-bottom: 1px solid #ddd;
+}
+table th, table td {
+    padding: 10px 23px;
+    color: #020202;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+table{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*Profile page*/
+.profile {
+    background-color: #fffefe;
+    position: absolute;
+    top: 48px;
+    left: 30%;
+    text-align: center;
+    width: 40%;
+    color: #060606;
+    box-shadow: 0 4px 15px #e4e0e3;
+}
+
+#edit-pro-img button{
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.pro-image{
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 37%;
+    margin-bottom: 20px
+}
+
+.pro-image-admin {
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 178px;
+    margin-bottom: 20px;
+}
+
+.pro-image-staff {
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 178px;
+    margin-bottom: 20px;
+}
+/*Admin page*/
+.table-users{
+    width: 65%;
+    margin-top: 10px;
+    z-index: 0;
+    margin-left: 210px;
+    box-shadow: 0 5px 15px #ccc;
+    padding-bottom: 20px;
+}
+
+.table-transactions{
+    width: 72%;
+    margin-top: 10px;
+    z-index: 0;
+    margin-left: 200px;
+    box-shadow: 0 5px 15px #ccc;
+    padding-bottom: 20px;
+}
+
+#view-users{
+    margin-left: 10px;
+}
+#operation{
+    background-image: linear-gradient(-90deg, #061161, #780206);
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.view a{
+    display: block;
+    text-decoration: none;
+    color: #0a0a0a;
+}
+
+.view{
+    cursor: pointer;
+}
+.view:hover{
+    background:rgb(245, 241, 241);
+}
+
+#trashEmail{
+    width: 25px;
+}
+
+/*Staff page*/
+
+#staff-users{
+    margin-left: 20px;
+}
+
+/* The Popup*/
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  /* Popup container */
+  .popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    color: #020202;
+    border: 1px solid #888;
+    border-radius: 6px;
+    width: 30%; 
+  }
+  
+  /* The Close popup Button */
+  .closePopup {
+    color: rgb(10, 10, 10);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closePopup:hover,
+  .closePopup:focus {
+    color: rgba(201, 6, 6, 0.986);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #popupBtn{
+      padding: 5px 28px;
+      font-size: 12px;
+      border-radius: 2px;
+      background: #091160;
+  }
+
+  #popupBtnok{
+    padding: 5px 28px;
+    font-size: 12px;
+    border-radius: 2px;
+    background: #c5070f;
+}
+.transa {
+    border-bottom: none;
+    color: black;
+    text-align: left;
+    padding-right: 60px;
+}
+
+/*Media queries*/
+@media(max-width: 768px){
+    .container{
+        width: 90%;
+        margin: auto;
+    }
+    .intro{
+        width: 100%;
+        position: absolute;
+        z-index: 0;
+    }
+    header{
+        z-index: 1;
+    }
+    .right-side{
+        display: none;
+    }
+    header .menu{
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 20px;
+        top: 17px; 
+    }
+
+    header .menu img{
+        width: 100%;
+        height: 100%
+    }
+
+    header nav ul li{
+        display: none;
+    }
+
+    #welcome {
+        padding-top: 80px;
+        padding-left: 20px;
+    }
+
+    .avatar{
+        display: none;
+    }
+
+    .navbar {
+        display: block;
+        background:#061161;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+       transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -webkit-transition: transform 0.6s ease;
+        transition: transform 0.5s ease;
+        
+    }
+
+    .admin-nav-side{
+        display: block;
+        margin-top: 20px;
+        color: #fff;
+        font-size: 21px;
+    }
+
+    .navbar ul{
+        margin-top: 60px;
+        margin-left: 0px;
+    }
+    .navbar a{
+        text-decoration: none;
+    }
+
+    .close{
+        display: block;
+        margin: 10px;
+        font-size: 25px;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        position: fixed;
+        border: 1px solid #fff;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        color: white
+        
+    }
+
+    /*Sign-up page*/
+    .allForm {
+        top: 10px;
+        left: 25%;
+        width: 50%;
+    }
+    .signup{
+        min-height: 88%;
+        overflow: hidden;
+    }
+    .allForm h2{
+        border-radius: 0;
+    }
+
+    /*Sign-in page*/
+    .signin{
+        min-height: 88%;
+        margin-top: 70px;
+        margin-left: 5px;
+        width: 96%;
+        overflow: hidden;
+    }
+    #signin{
+        margin-top:0;
+    }
+
+    /*History transactions*/
+    .table-responsive {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 2px;
+        overflow: auto;
+        z-index: 0;
+    }
+
+    /*Profile page*/
+    .profile {
+        position: absolute;
+        top: 48px;
+        margin-left: -27%;
+        bottom: 10px;
+        text-align: center;
+        width: 93%;
+    }
+
+    .pro-image {
+        width: 25%;
+        margin-top: 20px;
+        margin-left: 113px;
+        margin-bottom: 20px;
+    }
+
+    /*Admin page*/
+    .table-users {
+        width: 50%;
+        margin-top: 5px;
+        z-index: 0;
+        margin-left: 25%;
+        overflow: auto;
+    }
+
+    .table-transactions{
+        width: 50%;
+        margin-left: 25%;
+    }
+    
+    #staff-users{
+        margin-left: 0;
+    }
+
+    /* The Popup*/
+.popup {
+    top: 50px;
+  }
+  
+  /* Popup container */
+  .popup-content {
+    width: 70%; 
+  }
+
+  .removeCol{
+      display: none;
+  }
+
+.pro-image-admin {
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 37%;
+    margin-bottom: 20px;
+}
+
+.pro-image-staff {
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 37%;
+    margin-bottom: 20px;
+}
+
+.pro-image {
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 36%;
+    margin-bottom: 20px;
+}
+
+}
+
+@media(min-width: 1024px){
+    .profile {
+        left: 31%;
+    }
+
+    .pro-image-admin {
+        margin-left: 37%;
+    }
+    .pro-image-staff {
+        margin-left: 37%;
+    }
+
+    .allForm {
+        right: 34%;
+    }
+}
+
+@media (max-width: 425px){
+.table-users {
+    width: 100%;
+    margin-top: 5px;
+    z-index: 0;
+    margin-left: 0px;
+    overflow: auto;
+}
+
+.allForm {
+    top: 10px;
+    left: 5%;
+    width: 90%;
+}
+
+.table-transactions{
+    width: 100%;
+    margin-top: 5px;
+    z-index: 0;
+    margin-left: 2px;
+    overflow: auto;
+}
+
+.table-responsive {
+    width: 100%;
+    margin-left: 2px;
+}
+}

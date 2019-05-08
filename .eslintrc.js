@@ -29,5 +29,7 @@ module.exports = {
     "no-plusplus": 0,
     "import/no-mutable-exports": 0,
     "no-restricted-globals": 0,
+    "quote-props": 0,
+    "no-use-before-define": 0,
   },
 };
