@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Banka | Sign-in</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css">
 </head>
 <body>
     <!--Navbar-->
@@ -50,22 +51,29 @@
         <!--Login form-->
         <div class="allForm" id="signin">
             <h2>Signin to Banka</h2>
-            <form action="profile.html" method="">
+            <form id="signinUser">
                 
                 <div class="inputBox">
-                    <input autocomplete="off" type="email" name="email"  required>
+                    <input autocomplete="off" type="email" id="email"  required>
                     <label for="email">Email</label>
                 </div>
                 
                 <div class="inputBox">          
-                    <input type="password" name="password" required>
+                    <input type="password" id="password" required>
                     <label for="password">Password</label>
                 </div>
-                <input type="submit" name="submit" id="submitSingIn" value="Signin">
+                <input type="submit" value="Submit">
                 
             </form>
         </div>
+        <div id="triggerPopup" class="popup-error">
+            <div class="error-content">
+                <span class="closePopup">&times;</span>
+                <p id="errors"></p>
+        </div>
+        </div>
     </section>
     <script src="../js/index.js"></script>
+    <script src="../frontend/signin.js"></script>
 </body>
 </html>

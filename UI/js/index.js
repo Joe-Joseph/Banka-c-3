@@ -28,9 +28,9 @@ span.onclick = () => {
   popup.style.display = 'none';
 };
 
-popupBtn.onclick = () => {
-  popup.style.display = 'none';
-};
+// popupBtn.onclick = () => {
+//   popup.style.display = 'none';
+// };
 
 window.onclick = (event) => {
   if (event.target === popup) {
