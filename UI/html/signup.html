@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banka | Sign-up</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css">
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="container">
+            <div id="logo">
+                <a href="../index.html"><h1>Banka</h1></a>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a class="active" href="../html/signup.html">Signup</a></li>
+                    <li><a href="../html/signin.html">Signin</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu">
+                <img src="../assets/icons/menu.svg" alt="Menu">
+            </div>
+        </div>
+    </header>
+
+    <!--Side nav for the small screen-->
+    <section class="signup">
+        <div class="navbar">
+            <ul> 
+                <div class="close">X</div>
+                
+                    <a href="signin.html">
+                        <div class="admin-nav-side">
+                            Sign in
+                        </div>
+                    </a>
+                
+                    <a href="signup.html">
+                        <div class="admin-nav-side">
+                            Sign up
+                        </div>
+                    </a>
+                      
+            </ul>
+        </div>
+        <!--Registration form-->
+        <div class="allForm">
+            <h2>Signup to Banka</h2>
+            <form id = "signupUser">
+                <div class="inputBox">            
+                    <input autocomplete="off" type="text" minlength="3" id="firstName" required>
+                    <label for="firstName">First Name</label>
+                </div>
+                
+                <div class="inputBox">                   
+                    <input autocomplete="off" type="text" id="lastName" minlength="3" required>
+                    <label for="lastName">Last Name</label>
+                </div>
+                
+                <div class="inputBox">
+                    <input autocomplete="off" type="email" id="email"  required>
+                    <label for="email">Email</label>
+                </div>
+                
+                <div class="inputBox">          
+                    <input autocomplete="off" type="password" id="password" minlength="6" required>
+                    <label for="password">Password</label>
+                </div>
+                
+                <input type="submit" id="submitButton" value="Submit"></a>
+            </form>
+        </div>
+
+        <div id="triggerPopup" class="popup-error">
+            <div class="error-content">
+                <span class="closePopup">&times;</span>
+                <p id="errors"></p>
+        </div>
+        </div>
+    </section>
+    <script src="../js/index.js"></script>
+    <script src="../frontend/signup.js"></script>
+</body>
+</html>

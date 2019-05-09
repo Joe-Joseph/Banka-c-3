@@ -1,0 +1,40 @@
+/* The Popup*/
+.popup-error {
+    display: none;
+    background-color: #b65b5b;
+    padding: 20px;
+    border-radius: 6px;
+    width: 230px; 
+    position: relative;
+    left: 900px;
+    right: 0;
+    top: 150px;
+  }
+  
+  /* Popup container */
+  .error-content{
+    color: #fcf9f9;
+    overflow: auto;
+  }
+  
+  /* The Close popup Button */
+  .closePopup {
+    color: rgb(255, 253, 253);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closePopup:hover,
+  .closePopup:focus {
+    color: rgba(201, 6, 6, 0.986);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #btn-cancel{
+      padding: 5px 28px;
+      font-size: 12px;
+      border-radius: 2px;
+      background: #c5070f;
+  }

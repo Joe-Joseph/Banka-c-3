@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banka | Create account</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="container">
+            <div id="logo">
+                <a href="../index.html"><h1>Banka</h1></a>
+            </div>
+
+            <nav id="pro">
+                <ul>
+                    <li><a class="active" href="../html/create-account.html">Open-account</a></li>
+                    <li><a href="../html/history.html">History</a></li>
+                    <li><a href="../index.html">Logout</a></li>    
+                </ul>
+            </nav>
+            <div class="avatar">
+                <a href="../html/profile.html">
+                    <img src="../assets/icons/man.svg" alt="Profile">
+                </a> 
+            </div>
+
+            <div class="menu">
+                <img src="../assets/icons/menu.svg" alt="Menu">
+            </div>
+        </div>
+    </header>
+
+    <!--Side nav for the small screen-->
+    <section class="signup">
+        <div class="navbar">
+            <ul> 
+                <div class="close">X</div>
+
+                    <a href="../html/profile.html">
+                        <div class="admin-nav-side">
+                            Profile 
+                        </div>
+                    </a>
+
+                
+                    <a href="../html/history.html">
+                        <div class="admin-nav-side">
+                            History
+                        </div>
+                    </a>
+                
+                
+                    <a href="../html/create-account.html">
+                        <div class="admin-nav-side">
+                            Open-account
+                        </div>
+                    </a>
+
+                    <a href="../index.html">
+                        <div class="admin-nav-side">
+                            Logout
+                        </div>
+                    </a>
+                
+                    
+            </ul>
+        </div>
+        <!--Registration form-->
+        <div class="allForm">
+            <h2>Create account</h2>
+            <form action=".html">
+                <div class="inputBox">            
+                    <input autocomplete="off" type="text" name="firstName" minlength="3" required>
+                    <label for="firstName">First Name</label>
+                </div>
+                
+                <div class="inputBox">                   
+                    <input autocomplete="off" type="text" name="lastName" minlength="3" required>
+                    <label for="lastName">Last Name</label>
+                </div>
+                
+                <div class="inputBox">
+                    <input autocomplete="off" type="email" name="email"  required>
+                    <label for="email">Email</label>
+                </div>
+                
+                <div class="inputBox">          
+                    <input autocomplete="off" type="text" name="branch" minlength="3" required>
+                    <label for="branch">Branch</label>
+                </div>
+
+                <div class="inputBox">          
+                    <select name="">
+                        <option value="">Account type</option>
+                        <option value="">Saving</option>
+                        <option value="">Current</option>
+                    </select>
+                </div>
+                
+                
+                <input type="submit" name="submit" id="submitButton" value="Submit"></a>
+            </form>
+        </div>
+    </section>
+    <script src="../js/index.js"></script>
+</body>
+</html>

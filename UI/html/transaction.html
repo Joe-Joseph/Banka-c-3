@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banka | Transaction</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="container">
+            <div id="logo">
+                <a href="../index.html"><h1>Banka</h1></a>
+            </div>
+
+            <nav id="pro">
+                <ul>
+                    <li><a class="active" href="../html/transaction.html">Transaction</a></li>
+                    <li><a href="../html/staff.html">users</a></li>
+                    <li><a href="../index.html">Logout</a></li>    
+                </ul>
+            </nav>
+
+            <div class="menu">
+                <img src="../assets/icons/menu.svg" alt="Menu">
+            </div>
+        </div>
+    </header>
+
+    <!--Side nav for the small screen-->
+    <section class="signup">
+        <div class="navbar">
+            <ul> 
+                <div class="close">X</div>
+
+                    <a href="../html/staff.html">
+                        <div class="admin-nav-side">
+                            Users
+                        </div>
+                    </a>
+                    
+                    <a href="../html/transaction.html">
+                        <div class="admin-nav-side">
+                            Transaction 
+                        </div>
+                    </a>
+
+                    <a href="../index.html">
+                        <div class="admin-nav-side">
+                            Logout
+                        </div>
+                    </a>         
+            </ul>
+        </div>
+        <!--Registration form-->
+        <div class="allForm">
+            <h2>Transaction</h2>
+            <form action=".html">
+                <div class="inputBox">            
+                    <input autocomplete="off" type="text" name="firstName" required>
+                    <label for="firstName">Account number</label>
+                </div>
+                
+                <div class="inputBox">                   
+                    <input autocomplete="off" type="text" name="lastName" minlength="3" required>
+                    <label for="lastName">Cashier name</label>
+                </div>
+                
+                <div class="inputBox">          
+                    <input autocomplete="off" type="text" name="amount" required>
+                    <label for="password">Amount</label>
+                </div>
+
+                <div class="inputBox">          
+                    <select name="">
+                        <option value="">Transaction type</option>
+                        <option value="">Debit</option>
+                        <option value="">Credit</option>
+                    </select>
+                </div>
+                
+                
+                <input type="submit" name="submit" id="submitButton" value="Submit"></a>
+            </form>
+        </div>
+    </section>
+    <script src="../js/index.js"></script>
+</body>
+</html>
