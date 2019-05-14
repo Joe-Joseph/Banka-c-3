@@ -29,8 +29,8 @@ class Users {
         data: {
           token,
           id: payload.id,
-          firstname: payload.firstname,
-          lastname: payload.lastname,
+          firstName: payload.firstname,
+          lastName: payload.lastname,
           email: payload.email,
           type: payload.type,
           isAdmin: payload.isAdmin,
@@ -65,13 +65,15 @@ class Users {
         const token = jwt.sign(payload, keys.secretKey, { expiresIn: '24h' });
         return res.status(200).json({
           status: 200,
-          data: token,
-          id: payload.id,
-          firstName: payload.firstname,
-          lastName: payload.lastname,
-          email: payload.email,
-          type: payload.type,
-          isAdmin: payload.isAdmin,
+          data: {
+            token,
+            id: payload.id,
+            firstName: payload.firstname,
+            lastName: payload.lastname,
+            email: payload.email,
+            type: payload.type,
+            isAdmin: payload.isAdmin,
+          },
         });
       }
       return res.status(404).json({ status: 404, error: 'Email and password not found' });

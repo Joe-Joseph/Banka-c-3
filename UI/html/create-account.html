@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Banka | Create account</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css">
 </head>
 <body>
     <!--Navbar-->
@@ -70,10 +71,10 @@
             </ul>
         </div>
         <!--Registration form-->
-        <div class="allForm">
+        <div class="allForm" id="create-account-form">
             <h2>Create account</h2>
-            <form action=".html">
-                <div class="inputBox">            
+            <form id="create-account">
+                <!-- <div class="inputBox">            
                     <input autocomplete="off" type="text" name="firstName" minlength="3" required>
                     <label for="firstName">First Name</label>
                 </div>
@@ -91,21 +92,30 @@
                 <div class="inputBox">          
                     <input autocomplete="off" type="text" name="branch" minlength="3" required>
                     <label for="branch">Branch</label>
-                </div>
+                </div> -->
 
                 <div class="inputBox">          
-                    <select name="">
+                    <select id="account-type">
                         <option value="">Account type</option>
-                        <option value="">Saving</option>
-                        <option value="">Current</option>
+                        <option>savings</option>
+                        <option>current</option>
                     </select>
                 </div>
                 
                 
-                <input type="submit" name="submit" id="submitButton" value="Submit"></a>
+                <input type="submit" name="submit" id="submitButton" value="Submit">
             </form>
         </div>
+
+        <div id="triggerPopup" class="popup-error">
+            <div class="error-content">
+                <span class="closePopup">&times;</span>
+                <p id="errors"></p>
+        </div>
+        </div>
+
     </section>
     <script src="../js/index.js"></script>
+    <script src="../frontend/create-account.js"></script>
 </body>
 </html>
