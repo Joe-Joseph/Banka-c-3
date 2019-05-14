@@ -15,7 +15,7 @@ class Accounts {
       const acc = await db.createAccount(req.body, req.user);
       return res.status(201).json({
         status: 201,
-        message: 'Bank account created successfully',
+        message: `Bank account successfully created with ${acc.rows[0].accountnumber} as your account number`,
         data: {
           accountNumber: acc.rows[0].accountnumber,
           firstName: req.user.firstname,

@@ -14,11 +14,13 @@ function signin(e) {
     body: JSON.stringify(data),
   }).then(res => res.json())
     .then(async (result) => {
+      // console.log(result.status);
       const {
         status, message, error, data,
       } = result;
 
-      await localStorage.setItem('userData', JSON.stringify(data));
+      await localStorage.setItem('userData', JSON.stringify(result));
+      // console.log(status);
 
       if (status === 404) {
         document.getElementById('triggerPopup').style.display = 'block';
@@ -29,13 +31,13 @@ function signin(e) {
         document.getElementById('errors').innerHTML = error;
       }
       if (status === 200) {
-        if (result.type === 'staff' && !result.isAdmin) {
+        if (data.type === 'staff' && !data.isAdmin) {
           window.location = '../html/staff.html';
         }
-        if (result.isAdmin) {
+        if (data.isAdmin) {
           window.location = '../html/admin.html';
         }
-        if (result.type === 'user') {
+        if (data.type === 'user') {
           window.location = '../html/profile.html';
         }
       }

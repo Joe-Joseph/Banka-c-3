@@ -23,7 +23,7 @@ function signup(e) {
         status, message, error, data,
       } = result;
 
-      await localStorage.setItem('userData', JSON.stringify(data));
+      await localStorage.setItem('userData', JSON.stringify(result));
       if (status === 201) {
         window.location = '../html/profile.html';
       }
